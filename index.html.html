@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Generative Prompt Writing Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Simple transition for lesson content */
+        #lesson-content {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-gray-200">
+        
+        <!-- Course Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-600">AI Prompt Writing Crash Course</h1>
+            <p class="text-gray-500 mt-2">Your journey into creating art with AI starts here! 🚀</p>
+        </header>
+
+        <!-- Lesson Display Area -->
+        <main id="lesson-container" class="mb-8 min-h-[400px]">
+            <div id="lesson-content" class="fade-in">
+                <!-- Lesson content will be injected here by JavaScript -->
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <footer class="flex justify-between items-center">
+            <button id="prev-btn" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                Previous
+            </button>
+            <div id="lesson-counter" class="text-sm text-gray-500"></div>
+            <button id="next-btn" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                Next Lesson
+            </button>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- COURSE DATA ---
+        const lessons = [
+            {
+                title: "Welcome to the Course!",
+                content: `
+                    <p class="text-lg mb-4">Hello there! 👋 I'm your friendly AI guide, and I'm so excited to help you explore the amazing world of creating art with artificial intelligence.</p>
+                    <p class="mb-4">This short crash course will teach you everything you need to know to start making your own beautiful and unique AI creations. Think of it as a partnership between your imagination and the AI's power.</p>
+                    <div class="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg mt-6">
+                        <h4 class="font-bold text-indigo-800">Your Goal:</h4>
+                        <p class="text-indigo-700">To learn how to "speak" to the AI through prompts to bring your creative visions to life.</p>
+                    </div>
+                    <p class="text-center mt-8 font-semibold">Click "Next Lesson" to get started!</p>
+                `
+            },
+            {
+                title: "Lesson 1: What is AI Generative Art?",
+                content: `
+                    <p class="text-lg mb-4">At its core, <strong>AI Generative Art</strong> is a partnership between a human and an AI.</p>
+                    <ul class="list-disc list-inside space-y-3 mb-4">
+                        <li>You provide a creative idea in the form of a text description, called a <strong>prompt</strong>.</li>
+                        <li>The AI then interprets your prompt and creates a unique image based on your description.</li>
+                    </ul>
+                    <p class="mb-4">Think of yourself as the director and the AI as your incredibly talented, super-fast artist. You give the instructions, and it brings your vision to life in seconds!</p>
+                `
+            },
+            {
+                title: "Lesson 2: The Anatomy of a Prompt",
+                content: `
+                    <p class="text-lg mb-4">A great prompt is like a good recipe. The three key components are the <strong>Subject</strong>, <strong>Style</strong>, and <strong>Modifiers</strong>.</p>
+                    <ul class="space-y-4">
+                        <li><strong class="text-indigo-600">1. Subject:</strong> The 'what' of your image. (e.g., <code class="bg-gray-200 p-1 rounded">a majestic lion</code>)</li>
+                        <li><strong class="text-indigo-600">2. Style:</strong> The artistic look. (e.g., <code class="bg-gray-200 p-1 rounded">watercolor painting</code>)</li>
+                        <li><strong class="text-indigo-600">3. Modifiers:</strong> Extra details like lighting, mood, and environment. (e.g., <code class="bg-gray-200 p-1 rounded">wearing a crown, soft morning light</code>)</li>
+                    </ul>
+                    <div class="bg-gray-100 p-4 rounded-lg mt-6 text-sm">
+                        <p class="font-semibold">Full Prompt Example:</p>
+                        <p>"A majestic lion wearing a crown, soft morning light, watercolor painting."</p>
+                    </div>
+                `
+            },
+            {
+                title: "Lesson 3: Powerful Modifiers",
+                content: `
+                    <p class="text-lg mb-4">Modifiers are your secret weapon for creating stunning images. They add atmosphere, detail, and context. Let's explore some types:</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Atmosphere/Mood:</strong> <code class="bg-gray-200 p-1 rounded">dreamy</code>, <code class="bg-gray-200 p-1 rounded">cinematic</code>, <code class="bg-gray-200 p-1 rounded">eerie</code>, <code class="bg-gray-200 p-1 rounded">joyful</code></li>
+                        <li><strong>Lighting:</strong> <code class="bg-gray-200 p-1 rounded">dramatic lighting</code>, <code class="bg-gray-200 p-1 rounded">neon glow</code>, <code class="bg-gray-200 p-1 rounded">moonlit</code></li>
+                        <li><strong>Camera Angle:</strong> <code class="bg-gray-200 p-1 rounded">wide-angle shot</code>, <code class="bg-gray-200 p-1 rounded">macro photo</code>, <code class="bg-gray-200 p-1 rounded">drone view</code></li>
+                        <li><strong>Detail Level:</strong> <code class="bg-gray-200 p-1 rounded">highly detailed</code>, <code class="bg-gray-200 p-1 rounded">4k</code>, <code class="bg-gray-200 p-1 rounded">photorealistic</code></li>
+                    </ul>
+                `
+            },
+            {
+                title: "Lesson 4: The Magic of Style Keywords",
+                content: `
+                    <p class="text-lg mb-4">Saying "painting" is good, but being specific is better! You can guide the AI with much more precision.</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Artist Names:</strong> <code class="bg-gray-200 p-1 rounded">in the style of Van Gogh</code>, <code class="bg-gray-200 p-1 rounded">by Alphonse Mucha</code></li>
+                        <li><strong>Art Movements:</strong> <code class="bg-gray-200 p-1 rounded">Impressionism</code>, <code class="bg-gray-200 p-1 rounded">Art Nouveau</code>, <code class="bg-gray-200 p-1 rounded">Surrealism</code></li>
+                        <li><strong>Rendering Engines:</strong> For 3D looks, try <code class="bg-gray-200 p-1 rounded">Octane Render</code> or <code class="bg-gray-200 p-1 rounded">Unreal Engine</code>.</li>
+                        <li><strong>Mediums:</strong> <code class="bg-gray-200 p-1 rounded">acrylic painting</code>, <code class="bg-gray-200 p-1 rounded">charcoal sketch</code>, <code class="bg-gray-200 p-1 rounded">linocut print</code></li>
+                    </ul>
+                     <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg mt-6">
+                        <h4 class="font-bold text-green-800">Challenge Time!</h4>
+                        <p class="text-green-700">Think of your favorite artist. Try adding "in the style of [Artist's Name]" to a simple prompt and see how it transforms the result!</p>
+                    </div>
+                `
+            },
+            {
+                title: "Lesson 5: Using Negative Prompts",
+                content: `
+                    <p class="text-lg mb-4">Sometimes it's just as important to tell the AI what you <strong>don't</strong> want. This is done with a "negative prompt."</p>
+                    <p class="mb-4">Most AI tools have a separate input box for negative prompts. They help you remove unwanted elements and clean up your images.</p>
+                    <p class="font-semibold">Common Negative Prompts:</p>
+                    <ul class="list-disc list-inside space-y-3 mt-2">
+                        <li>To avoid messy images: <code class="bg-gray-200 p-1 rounded">blurry, deformed, disfigured</code></li>
+                        <li>To remove text: <code class="bg-gray-200 p-1 rounded">text, watermark, signature</code></li>
+                        <li>To fix hands (a common AI issue): <code class="bg-gray-200 p-1 rounded">extra fingers, mutated hands</code></li>
+                    </ul>
+                    <p class="mt-4">Using a negative prompt like <code class="bg-gray-200 p-1 rounded">cartoon, anime</code> can also push your image towards a more realistic style.</p>
+                `
+            },
+            {
+                title: "Lesson 6: The Iterative Process",
+                content: `
+                    <p class="text-lg mb-4">Your first prompt rarely creates the perfect image. The real magic is in refining your idea. This is the iterative loop!</p>
+                    <ol class="list-decimal list-inside space-y-3">
+                        <li><strong>Start Simple:</strong> Begin with a basic subject and style. (e.g., <code class="bg-gray-200 p-1 rounded">a castle in the clouds, digital art</code>)</li>
+                        <li><strong>Generate & Analyze:</strong> Create the image. What do you like? What's missing? Maybe you want it to look more epic.</li>
+                        <li><strong>Refine the Prompt:</strong> Add modifiers to get closer to your vision. (e.g., <code class="bg-gray-200 p-1 rounded">epic fantasy castle on a floating island, cinematic lighting, highly detailed</code>)</li>
+                        <li><strong>Repeat:</strong> Generate again. Keep tweaking your prompt until you love the result.</li>
+                    </ol>
+                    <p class="mt-4">This process of refining and regenerating is the core workflow of every great AI artist.</p>
+                `
+            },
+            {
+                title: "Lesson 7: Advanced Parameters (A Sneak Peek)",
+                content: `
+                    <p class="text-lg mb-4">Most AI tools have advanced settings that give you even more control. You don't need these to start, but it's good to know they exist!</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Aspect Ratio:</strong> Controls the shape of your image. Instead of a square, you can create a widescreen image (<code class="bg-gray-200 p-1 rounded">--ar 16:9</code>) or a portrait (<code class="bg-gray-200 p-1 rounded">--ar 2:3</code>).</li>
+                        <li><strong>Seed Number:</strong> A seed is a starting number for the AI's randomness. Reusing the same seed with the same prompt will create a very similar image, which is great for making small adjustments.</li>
+                        <li><strong>Stylize:</strong> A setting that controls how artistic or "stylized" the AI's interpretation is. A low value sticks closely to your prompt, while a high value gets more creative.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Lesson 8: Managing Your Prompts",
+                content: `
+                    <p class="text-lg mb-4">As you create, you'll discover prompts that give you amazing results. Don't lose them! It's a great practice to keep a "prompt library."</p>
+                    <p class="mb-4">You can use a simple text file, a spreadsheet, or a note-taking app. For each entry, save:</p>
+                    <ul class="list-decimal list-inside space-y-2">
+                        <li>The final, successful prompt text.</li>
+                        <li>Any negative prompts used.</li>
+                        <li>A few notes on why you liked it.</li>
+                    </ul>
+                    <p class="mt-4">This library becomes your personal recipe book for creating awesome art, helping you learn and reuse successful formulas.</p>
+                `
+            },
+            {
+                title: "You've Completed the Course!",
+                content: `
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold text-green-600 mb-4">Congratulations! 🎉</h2>
+                        <p class="text-lg mb-4">You now have all the fundamental skills to write effective prompts and create incredible AI generative art.</p>
+                        <p class="mb-4">The most important thing now is to practice. Experiment, iterate, and don't be afraid to try weird combinations—sometimes they produce the most interesting results!</p>
+                        <p class="font-semibold mt-6">Happy creating!</p>
+                    </div>
+                `
+            }
+        ];
+
+        // --- SCRIPT LOGIC ---
+        let currentLessonIndex = 0;
+
+        const lessonContentEl = document.getElementById('lesson-content');
+        const lessonCounterEl = document.getElementById('lesson-counter');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        function displayLesson(index) {
+            const lesson = lessons[index];
+            
+            lessonContentEl.classList.remove('fade-in');
+            lessonContentEl.classList.add('fade-out');
+
+            setTimeout(() => {
+                lessonContentEl.innerHTML = `
+                    <h2 class="text-2xl font-bold mb-4">${lesson.title}</h2>
+                    <div>${lesson.content}</div>
+                `;
+                
+                lessonContentEl.classList.remove('fade-out');
+                lessonContentEl.classList.add('fade-in');
+
+                updateNavigation();
+            }, 300);
+        }
+
+        function updateNavigation() {
+            if (currentLessonIndex > 0 && currentLessonIndex < lessons.length - 1) {
+                lessonCounterEl.textContent = `Lesson ${currentLessonIndex}`;
+            } else {
+                lessonCounterEl.textContent = '';
+            }
+
+            prevBtn.disabled = currentLessonIndex === 0;
+
+            if (currentLessonIndex === lessons.length - 1) {
+                nextBtn.textContent = 'Finish';
+                nextBtn.disabled = true;
+                nextBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+                nextBtn.classList.add('bg-green-600', 'cursor-default');
+            } else {
+                nextBtn.textContent = 'Next Lesson';
+                nextBtn.disabled = false;
+                nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+                nextBtn.classList.remove('bg-green-600', 'cursor-default');
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentLessonIndex < lessons.length - 1) {
+                currentLessonIndex++;
+                displayLesson(currentLessonIndex);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentLessonIndex > 0) {
+                currentLessonIndex--;
+                displayLesson(currentLessonIndex);
+            }
+        });
+
+        // Initial load
+        window.onload = () => {
+            displayLesson(currentLessonIndex);
+        };
+    </script>
+</body>
+</html>
